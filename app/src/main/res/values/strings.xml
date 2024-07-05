@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QRCodeScanning</string>
+    <string name="turn_off_flashlight">Flashlight OFF</string>
+    <string name="turn_on_flashlight">Flashlight ON</string>
 </resources>
