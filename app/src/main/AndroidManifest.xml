@@ -35,6 +35,11 @@
             android:theme="@style/zxing_CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
+        <activity android:name=".zxing.extended.QRCodeScanActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+
         <activity android:name=".mlkit.MLKitActivity"
             android:stateNotNeeded="false"
             android:windowSoftInputMode="stateAlwaysHidden" />

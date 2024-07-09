@@ -1,5 +1,7 @@
 package com.clp3z.qrcodescanning.zxing
 
+import android.app.Application
+import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,12 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.clp3z.qrcodescanning.ui.theme.QRCodeScanningTheme
+import com.clp3z.qrcodescanning.zxing.extended.QRCodeScanActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 
 @Composable
 fun QRCodeScanScreen() {
-    var url by remember { mutableStateOf("") }
+    var url by remember { mutableStateOf("Value") }
     val scanLauncher = rememberLauncherForActivityResult(
         contract = ScanContract(),
         onResult = { url = it.contents ?: "Error." }
@@ -37,9 +40,11 @@ fun QRCodeScanScreen() {
             onClick = {
                 val scanOptions = ScanOptions().apply {
                     setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-                    setCaptureActivity(CustomCaptureActivity::class.java)
+                    setCaptureActivity(QRCodeScanActivity::class.java)
                     setOrientationLocked(false)
                     setBeepEnabled(false)
+                    setTorchEnabled(true)
+                    setPrompt("")
                 }
                 scanLauncher.launch(scanOptions)
             }
@@ -49,6 +54,9 @@ fun QRCodeScanScreen() {
         Text(text = url)
     }
 }
+
+private fun Application.hasFlash() =
+    packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
 
 @Preview(showBackground = true)
 @Composable

@@ -24,7 +24,7 @@ class CustomCaptureActivity : Activity(), DecoratedBarcodeView.TorchListener {
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner)
         barcodeScannerView.setTorchListener(this)
 
-        switchFlashlightButton = findViewById(R.id.switch_flashlight)
+        // switchFlashlightButton = findViewById(R.id.switch_flashlight)
         viewfinderView = barcodeScannerView.findViewById(R.id.zxing_viewfinder_view)
 
         if (!hasFlash()) switchFlashlightButton.visibility = View.GONE
