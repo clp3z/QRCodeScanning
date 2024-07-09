@@ -30,11 +30,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CustomCaptureActivity"
+        <activity android:name=".zxing.CustomCaptureActivity"
             android:stateNotNeeded="false"
             android:theme="@style/zxing_CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
+        <activity android:name=".mlkit.MLKitActivity"
+            android:stateNotNeeded="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>
